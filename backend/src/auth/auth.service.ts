@@ -1,3 +1,4 @@
+import { Role } from './../enums/role.enum';
 import {
   BadRequestException,
   Injectable,
@@ -20,7 +21,7 @@ export class AuthService {
     private usersService: UsersService,
   ) {}
 
-  async validateAccount(account: LoginDto): Promise<any> {
+  async validateLocal(account: LoginDto): Promise<any> {
     const user = await this.usersService.findOneByName(account.username);
 
     try {
@@ -43,7 +44,7 @@ export class AuthService {
     }
   }
 
-  async login(loginData: LoginDto): Promise<{
+  async loginWithLocal(loginData: LoginDto): Promise<{
     access_token: string;
   }> {
     const { username } = loginData;
@@ -59,7 +60,7 @@ export class AuthService {
     };
   }
 
-  async register(registerData: RegisterDto): Promise<Users> {
+  async registerWithLocal(registerData: RegisterDto): Promise<Users> {
     const { username, password, role } = registerData;
     const isExist = await this.usersService.findOneByName(username);
     try {
@@ -80,15 +81,17 @@ export class AuthService {
     }
   }
 
-  async loginWithFirebaseGoogle(token: string) {
+  async loginWithFirebaseGoogle(token: string): Promise<{
+    access_token: string;
+  }> {
     const decode = this.decodedIdToken(token);
-    return this.handleProcessLogin(
+    return this.handleProcessLoginGoogle(
       (decode as DecodedIdToken).email,
       decode as DecodedIdToken,
     );
   }
 
-  async handleProcessLogin(
+  async handleProcessLoginGoogle(
     _email: string,
     options: DecodedIdToken,
   ): Promise<{
@@ -118,7 +121,7 @@ export class AuthService {
       const payload = {
         username: createUserObject.email,
         sub: createUserObject._id,
-        role: createUserObject.role,
+        role: Role.User,
       };
 
       return {

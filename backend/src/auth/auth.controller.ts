@@ -22,13 +22,13 @@ export class AuthController {
 
   @Post('register')
   register(@Body() registerData: RegisterDto) {
-    return this.authService.register(registerData);
+    return this.authService.registerWithLocal(registerData);
   }
 
   @UseGuards(LocalAuthGuard)
   @Post('login')
   async login(@Body() loginData: LoginDto) {
-    return this.authService.login(loginData);
+    return this.authService.loginWithLocal(loginData);
   }
 
   @HasRoles(Role.User)
