@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@nestjs/config": "^2.3.1",
+    "nestjs-cloudinary": "^1.0.9"
+  },
+  "devDependencies": {
+    "@types/multer": "^1.4.7"
+  }
+}
