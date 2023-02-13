@@ -28,5 +28,6 @@ import { PassportLocalStrategy } from './strategies/local.strategy';
     PassportJwtStrategy,
     FirebaseStrategy,
   ],
+  exports: [PassportJwtStrategy, PassportLocalStrategy, AuthService],
 })
 export class AuthModule {}

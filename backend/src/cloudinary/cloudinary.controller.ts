@@ -12,14 +12,12 @@ import {
 } from '@nestjs/common';
 import { AnyFilesInterceptor, FileInterceptor } from '@nestjs/platform-express';
 import { JwtAuthGuard } from './../auth/guards/jwt-auth.guard';
-import { NestCloudinaryClientService } from './cloudinary.service';
+import { NestCloudinaryService } from './cloudinary.service';
 import { Images } from './schemas/images.schema';
 
 @Controller('cloudinary')
-export class NestCloudinaryClientController {
-  constructor(
-    private nestCloudinaryClientService: NestCloudinaryClientService,
-  ) {}
+export class NestCloudinaryController {
+  constructor(private nestCloudinaryService: NestCloudinaryService) {}
 
   @HasRoles(Role.Admin, Role.User)
   @UseGuards(JwtAuthGuard)
@@ -29,8 +27,9 @@ export class NestCloudinaryClientController {
     @UploadedFile() file: Express.Multer.File,
   ): Promise<Images> {
     try {
-      const singleFile =
-        await this.nestCloudinaryClientService.uploadSingleFile(file);
+      const singleFile = await this.nestCloudinaryService.uploadSingleFile(
+        file,
+      );
       if (singleFile === undefined)
         throw new BadRequestException('Upload Single File error');
       return singleFile;
@@ -48,8 +47,9 @@ export class NestCloudinaryClientController {
     files: Express.Multer.File[],
   ): Promise<Images[]> {
     try {
-      const multipleFiles =
-        await this.nestCloudinaryClientService.uploadMultipleFile(files);
+      const multipleFiles = await this.nestCloudinaryService.uploadMultipleFile(
+        files,
+      );
       if (multipleFiles.length === 0)
         throw new BadGatewayException('Upload Multiple File error');
       return multipleFiles;

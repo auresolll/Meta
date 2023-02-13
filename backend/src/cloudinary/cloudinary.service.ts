@@ -1,11 +1,11 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CloudinaryService } from 'nestjs-cloudinary';
 import { Images, ImagesDocument } from './schemas/images.schema';
 
 @Injectable()
-export class NestCloudinaryClientService {
+export class NestCloudinaryService {
   constructor(
     @InjectModel(Image.name) private imgModel: Model<ImagesDocument>,
     private readonly cloudinaryService: CloudinaryService,
@@ -31,7 +31,7 @@ export class NestCloudinaryClientService {
   ): Promise<Images> | undefined {
     const uploadFileSnap = await this.cloudinaryService.uploadFile(file);
     console.log(
-      `[NestCloudinaryClientService] uploadFileSnap Code: ${uploadFileSnap.http_code}`,
+      `[NestCloudinaryService] uploadFileSnap Code: ${uploadFileSnap.http_code}`,
     );
     if (
       uploadFileSnap.public_id === undefined ||

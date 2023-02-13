@@ -1,21 +1,17 @@
+import { PassportJwtStrategy } from './../auth/strategies/jwt.strategy';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CloudinaryService } from 'nestjs-cloudinary';
-import { PassportJwtStrategy } from './../auth/strategies/jwt.strategy';
-import { NestCloudinaryClientController } from './cloudinary.controller';
-import { NestCloudinaryClientService } from './cloudinary.service';
 import { ImagesSchema } from './schemas/images.schema';
+import { NestCloudinaryController } from './cloudinary.controller';
+import { NestCloudinaryService } from './cloudinary.service';
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: Image.name, schema: ImagesSchema }]),
   ],
-  controllers: [NestCloudinaryClientController],
-  providers: [
-    NestCloudinaryClientService,
-    CloudinaryService,
-    PassportJwtStrategy,
-  ],
-  exports: [NestCloudinaryClientService],
+  controllers: [NestCloudinaryController],
+  providers: [NestCloudinaryService, CloudinaryService, PassportJwtStrategy],
+  exports: [NestCloudinaryService],
 })
 export class NestCloudinaryModule {}
