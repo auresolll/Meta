@@ -30,6 +30,7 @@
     "firebase-admin": "^9.8.0",
     "jwks-rsa": "^3.0.1",
     "mongoose": "^6.9.0",
+    "nestjs-cloudinary": "^1.0.9",
     "passport": "^0.6.0",
     "passport-firebase-jwt": "^1.2.1",
     "passport-jwt": "^4.0.1",

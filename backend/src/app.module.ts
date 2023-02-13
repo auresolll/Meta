@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { CloudinaryModule } from 'nestjs-cloudinary';
 import { AuthModule } from './auth/auth.module';
+import { NestCloudinaryModule } from './cloudinary/cloudinary.module';
+import { CloudinaryModule } from 'nestjs-cloudinary';
 import { cloudinaryConfig } from './config/cloudinary';
 import { configMongoose } from './config/mongoose';
 import { UsersModule } from './users/users.module';
@@ -12,6 +13,7 @@ import { UsersModule } from './users/users.module';
     CloudinaryModule.forRootAsync(cloudinaryConfig),
     AuthModule,
     UsersModule,
+    NestCloudinaryModule,
   ],
 })
 export class AppModule {}
