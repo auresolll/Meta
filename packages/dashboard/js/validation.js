@@ -29,6 +29,7 @@ export class FormValidator {
   validateOnEntry() {
     this.fields.forEach((field) => {
       const input = document.querySelector(`#${field}`);
+      if (input === null) return;
       input.addEventListener("input", (event) => {
         this.validateField(input);
       });
@@ -36,6 +37,8 @@ export class FormValidator {
   }
 
   validateField(field) {
+    console.log(field);
+    if (field === null) return;
     this.checkPresence(field);
     this.checkEmail(field);
     this.checkPassword(field);
@@ -72,6 +75,9 @@ export class FormValidator {
       const spaces = /\s/;
       const errors = [];
 
+      if (field.value.trim() === "") {
+        return;
+      }
       if (!lowerCase.test(field.value))
         errors.push("Password must contain a lowercase letter");
       if (!upperCase.test(field.value))
@@ -83,6 +89,7 @@ export class FormValidator {
       if (field.value.length < 7)
         errors.push("Password must be at least 7 characters");
 
+      console.log(errors);
       if (errors.length > 0) this.setStatus(field, errors, false);
     }
   }
@@ -92,18 +99,12 @@ export class FormValidator {
   }
 
   fieldValid(field) {
-    field.parentElement.querySelector(".error-icon").classList.add("hidden");
-    field.parentElement
-      .querySelector(".success-icon")
-      .classList.remove("hidden");
     field.classList.add("success");
     field.classList.remove("error");
     field.parentElement.querySelector(".error-message").innerText = "";
   }
 
   fieldInvalid(field, errors) {
-    field.parentElement.querySelector(".error-icon").classList.remove("hidden");
-    field.parentElement.querySelector(".success-icon").classList.add("hidden");
     field.classList.add("error");
     field.classList.remove("success");
 
@@ -116,12 +117,10 @@ export class FormValidator {
 
   displayErrorMessages(field, errors) {
     const container = field.parentElement.querySelector(".error-message");
-    errors.forEach((error) => {
-      const element = document.createElement("p");
-      const node = document.createTextNode(error);
-      element.appendChild(node);
-      container.appendChild(element);
-    });
+    const element = document.createElement("p");
+    const node = document.createTextNode(errors[0]);
+    element.appendChild(node);
+    container.appendChild(element);
   }
 }
 
