@@ -1,168 +1,181 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 input {
-    outline: none;
+  outline: none;
 }
 
 /* /*=================Register================= */
 
 .register {
-    padding-bottom: 25px;
+  padding-bottom: 25px;
 }
 
 .register__auth {
-    padding-top: 130px;
-    padding-left: 215px
+  padding-top: 130px;
+  padding-left: 215px;
 }
 
 .register__auth h1 {
-    padding-bottom: 5px;
-    font-size: 50px;
+  padding-bottom: 5px;
+  font-size: 50px;
 }
 
 .register__auth p {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .block {
-    padding-bottom: 25px;
+  padding-bottom: 25px;
 }
 
 .block h2 {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 input {
-    width: 316px;
-    border: 1px solid #C5C5C5;
-    padding: 6px;
-    border-radius: 6px;
-    text-indent: 8px;
+  width: 316px;
+  border: 1px solid #c5c5c5;
+  padding: 6px;
+  border-radius: 6px;
+  text-indent: 8px;
 }
 
 .input__fullname {
-    display: flex;
-    gap: 16px;
+  display: flex;
+  gap: 16px;
 }
 
 .input__name {
-    width: 150px;
+  width: 150px;
 }
 
 input::placeholder {
-    font-size: 12px;
-    padding-left: 5px;
+  font-size: 12px;
+  padding-left: 5px;
 }
 
 .block__password .input__password2 {
-    padding-top: 10px;
+  padding-top: 10px;
 }
 
 .register__sign__up {
-    border-radius: 6px;
-    padding-bottom: 14px;
-
+  border-radius: 6px;
+  padding-bottom: 14px;
 }
 
 .button__sign__up {
-    width: 315px;
-    height: 33px;
-    left: 216px;
-    top: 643px;
+  width: 315px;
+  height: 33px;
+  left: 216px;
+  top: 643px;
 }
 
 .sign__up__gg {
-    padding-top: 14px;
+  padding-top: 14px;
 }
 
 .sign__up__gg span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sign__up__gg .button__signup__gg {
-    width: 315px;
-    height: 33px;
-    left: 216px;
-    top: 643px;
-    background-color: white;
-    border-radius: 6px;
-    border: 1px solid #C5C5C5
+  width: 315px;
+  height: 33px;
+  left: 216px;
+  top: 643px;
+  background-color: white;
+  border-radius: 6px;
+  border: 1px solid #c5c5c5;
 }
 
 .button__sign__up {
-    background: #633EBA;
-    border-radius: 6px;
-    border: none;
-    color: white;
-    cursor: pointer;
+  background: #633eba;
+  border-radius: 6px;
+  border: none;
+  color: white;
+  cursor: pointer;
 }
 .button__sign__up i {
-    font-size: 12px;
+  font-size: 12px;
 
-    line-height: 18px;
-    width: 46px;
-    height: 18px;
-    left: 353px;
-    top: 651px;
+  line-height: 18px;
+  width: 46px;
+  height: 18px;
+  left: 353px;
+  top: 651px;
 }
 
 .sign__in {
-    display: flex;
-    align-items: center;
-    padding-top: 25px;
-    padding-left: 95px;
-
+  display: flex;
+  align-items: center;
+  padding-top: 25px;
+  padding-left: 95px;
 }
 
 .sign__in button {
-    color :#633EBA;
-    font-weight : 600;
+  color: #633eba;
+  font-weight: 600;
 }
 
 .sign__in .p__sign__in {
-    font-size:12px ;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-
+  font-size: 12px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
 .sign__in button {
-    padding-left: 8px;
-    border: none;
-    background-color: initial;
-    font-size: 12px;
+  padding-left: 8px;
+  border: none;
+  background-color: initial;
+  font-size: 12px;
 }
 
 .container {
-    display: flex;
-    height: 100vh;
+  display: flex;
+  height: 100vh;
 }
 
 .register__background {
-    background-color: #F3F5F9;
-    position: relative;
+  background-color: #f3f5f9;
+  position: relative;
 }
 
 .register__background img {
-    position: absolute;
-    left: 50%;
-    top: 0%;
-    transform: translate(-50% , 50%);
+  position: absolute;
+  left: 50%;
+  top: 0%;
+  transform: translate(-50%, 50%);
 }
 
-.register__background , .register__auth {
-    width: 50%;
+.register__background,
+.register__auth {
+  width: 50%;
+}
+
+.field .success {
+  border: 1px solid #46da72;
+}
+
+.field .error {
+  border: 1px solid #f15050;
+}
+
+.error-message,
+.error-message p {
+  margin-top: 0.5em;
+  color: #f15050;
+  font-size: 12px;
 }
 
 .field .success {
