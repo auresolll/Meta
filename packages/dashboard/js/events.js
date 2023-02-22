@@ -5,8 +5,8 @@ import {
 } from "./dom.js";
 import { authentication } from "./authentication.js";
 
-export const events = (() => {
-  handleSignInClick = (e) => {
+const events = (() => {
+  const handleSignInClick = (e) => {
     e.preventDefault();
     console.log(`[events] => starting click event Sign In`);
     const loginData = {
@@ -21,6 +21,6 @@ export const events = (() => {
   };
 })();
 
-buttonSignUpWithLocal.addEventListener("click", (e) =>
-  events.handleSignInClick(e)
-);
+// buttonSignUpWithLocal.addEventListener("click", (e) =>
+//   events.handleSignInClick(e)
+// );
