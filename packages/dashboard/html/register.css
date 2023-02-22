@@ -177,3 +177,18 @@ input::placeholder {
   color: #f15050;
   font-size: 12px;
 }
+
+.field .success {
+    border: 1px solid #46da72;
+  }
+  
+  .field .error {
+    border: 1px solid #f15050;
+  }
+  
+  .error-message,
+  .error-message p {
+    margin-top: 0.5em;
+    color: #f15050;
+    font-size: 12px;
+  }
