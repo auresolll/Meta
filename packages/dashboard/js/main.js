@@ -3,3 +3,4 @@ import "./authentication";
 import "./dom.js";
 import "./env.js";
 import "./events.js";
+import "./validation.js";
