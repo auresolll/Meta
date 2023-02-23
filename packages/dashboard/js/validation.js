@@ -37,7 +37,6 @@ export class FormValidator {
   }
 
   validateField(field) {
-    console.log(field);
     if (field === null) return;
     this.checkPresence(field);
     this.checkEmail(field);
@@ -89,7 +88,6 @@ export class FormValidator {
       if (field.value.length < 7)
         errors.push("Password must be at least 7 characters");
 
-      console.log(errors);
       if (errors.length > 0) this.setStatus(field, errors, false);
     }
   }
@@ -130,7 +128,7 @@ window.addEventListener("DOMContentLoaded", () => {
     typeFields.username,
     typeFields.lastName,
     typeFields.firstName,
-    typeFields.username,
+    typeFields.email,
     typeFields.password,
   ];
   const validator = new FormValidator(form, fields);
