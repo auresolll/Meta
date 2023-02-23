@@ -44,7 +44,6 @@ input {
 }
 
 .input__name {
-    width: 316px;
     border: 1px solid #C5C5C5;
     padding: 6px;
     border-radius: 6px;
@@ -98,6 +97,26 @@ input {
         justify-content: center;
         flex-direction: column-reverse;
     }
+    .input__name {
+        width: 150px !important;
+      }
+ /* ============register__mobile============= */
+
+    .register__background {
+        margin: 0 auto;
+        width: 100% !important;
+        background-color: white;
+    }
+    
+    .register__background img {
+        position: relative !important;
+        width: 150px;
+    }
+
+    .register__background {
+        bottom: 107px;
+    }
+ /* ============title__login__mobile============= */
 
     .login .title {
         display: none;
@@ -108,15 +127,7 @@ input {
         padding-left: 35px;
         padding-top: 15px;
     }
-
-    .register__background img {
-        position: relative !important;
-        width: 150px;
-    }
-
-    .register__background {
-        bottom: 107px;
-    }
+ /* ============title__login__mobile============= */
 
     .title__mobile {
         display: block;
@@ -137,17 +148,27 @@ input {
         background-color: inherit;
         color: #633eba;
     }
+ /* ============Sign__in__mobile============= */
 
     .Sign__in__mobile {
         display: flex;
         gap: 5px;
     }
+ /* ============title__register__mobile============= */
 
-    .register__background {
-        margin: 0 auto;
-        width: 100% !important;
-        background-color: white;
-    }
+ .full__name__mobile h1 {
+    font-size: 16px;
+ }
 
+ .input__fullname__mobile {
+    display: flex;
+    gap: 18px;
+    padding-bottom: 23px;
+
+ }
+
+ .input__fullname__mobile input {
+    width: 150px;
+ }
 
 }
