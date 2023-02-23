@@ -144,6 +144,7 @@ input::placeholder {
 .container {
   display: flex;
   height: 100vh;
+  justify-content: center;
 }
 
 .register__background {
