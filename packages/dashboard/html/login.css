@@ -8,7 +8,8 @@
 
 .login {
     padding-top: 130px;
-    padding-left: 215px
+    padding-left: 215px;
+    width: 50%;
 }
 
 .title {
@@ -56,7 +57,7 @@ input {
     font-size: 18px;
     flex-direction: row;
     gap: 70px;
-
+    padding-bottom: 8px;
 }
 
 .option p {
@@ -82,3 +83,34 @@ input {
     height: 18px;
 }
 
+.option button {
+  color: #633eba;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        justify-content: center;
+    flex-direction: column-reverse;
+    }
+
+    .login {
+        width: 100%;
+    }
+
+    .register__background img {
+        position: relative !important;
+        width: 72px;
+height: 179px;
+left: 179px;
+top: 84px;
+    }
+
+    .register__background {
+        margin: 0 auto;
+        width: 100% !important;
+        background-color: white;
+    }
+
+    
+  }
