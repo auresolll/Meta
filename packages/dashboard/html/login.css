@@ -4,6 +4,44 @@
     box-sizing: border-box;
 }
 
+body {
+    overflow: hidden;
+}
+
+button {
+    cursor: pointer;
+}
+
+.show-form {
+    opacity: 1 !important;
+    transition: .5s;
+    width: 100% !important;
+    height: 100% !important;
+    visibility: visible;
+}
+
+.display-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.form-container {
+    position: relative;
+}
+.form_sign_in, .form_register {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+}
+
 /* =================login================= */
 
 .login {
@@ -92,6 +130,15 @@ input {
     display: none;
 }
 
+@media only screen and (min-width: 768px) {
+    .register__background img {
+        position: absolute;
+        left: 50%;
+        top: 0%;
+        transform: translate(-50%, 50%);
+      }
+}
+
 @media only screen and (max-width: 600px) {
     .container {
         justify-content: center;
@@ -103,19 +150,19 @@ input {
  /* ============register__mobile============= */
 
     .register__background {
-        margin: 0 auto;
-        width: 100% !important;
+        margin: 20px auto;
+        display: block !important;
+        width: 150px;
+        margin-top: -23em;
+        height: 150px;
         background-color: white;
     }
     
     .register__background img {
-        position: relative !important;
+        position: unset !important;
         width: 150px;
     }
 
-    .register__background {
-        bottom: 107px;
-    }
  /* ============title__login__mobile============= */
 
     .login .title {
