@@ -22,6 +22,7 @@ export const TypeOrmModuleOptions: TypeOrmModuleAsyncOptions = {
         path.join(__dirname, '../../models/*.ts'),
         path.join(__dirname, '../../models/*.js'),
       ],
+      autoLoadEntities: true,
       synchronize: true,
       ...(NODE_ENV === 'DEVELOPMENT'
         ? { retryAttempts: 10, logging: true }
