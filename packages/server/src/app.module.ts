@@ -1,19 +1,12 @@
 import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
-import { AuthModule } from './auth/auth.module';
-import { NestCloudinaryModule } from './cloudinary/cloudinary.module';
-import { CloudinaryModule } from 'nestjs-cloudinary';
-import { cloudinaryConfig } from './config/cloudinary';
-import { configMongoose } from './config/mongoose';
-import { UsersModule } from './users/users.module';
+import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmModuleOptions } from './config/typeorm';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(configMongoose),
-    CloudinaryModule.forRootAsync(cloudinaryConfig),
-    AuthModule,
-    UsersModule,
-    NestCloudinaryModule,
+    ConfigModule.forRoot({ isGlobal: true }),
+    TypeOrmModule.forRootAsync(TypeOrmModuleOptions),
   ],
 })
 export class AppModule {}
