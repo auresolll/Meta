@@ -1,34 +1,27 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { SignInAuthDto } from './dto/sign-in.dto';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Body, Controller, Post, Req, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+import { ApiTags } from '@nestjs/swagger';
+import { User } from 'src/models/user.entity';
 import { AuthService } from './auth.service';
-import { CreateAuthDto } from './dto/create-auth.dto';
-import { UpdateAuthDto } from './dto/update-auth.dto';
+import { SignUpAuthDto } from './dto/sign-up.dto';
 
-@Controller('auth')
+@ApiTags('app/auth')
+@Controller('app/auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post()
-  create(@Body() createAuthDto: CreateAuthDto) {
-    return this.authService.create(createAuthDto);
+  @Post('signUp')
+  signUp(@Body() signUpAuthDto: SignUpAuthDto): Promise<User> {
+    return this.authService.signUp(signUpAuthDto);
   }
 
-  @Get()
-  findAll() {
-    return this.authService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.authService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAuthDto: UpdateAuthDto) {
-    return this.authService.update(+id, updateAuthDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.authService.remove(+id);
+  @UseGuards(AuthGuard('local'))
+  @Post('signIn')
+  signIn(@Body() signInAuthDto: SignInAuthDto): Promise<{
+    access_token: string;
+  }> {
+    return this.authService.signIn(signInAuthDto);
   }
 }
