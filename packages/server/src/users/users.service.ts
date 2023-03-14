@@ -1,10 +1,12 @@
-import { SignUpAuthDto } from './../auth/dto/sign-up.dto';
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { SignUpAuthDto } from './../auth/dto/sign-up.dto';
+import { PaginatedResult } from './../dtos/PaginatedResult.dto';
 import { User } from './../models/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
+import { GetUsersPaginationDto } from './dto/get-user-pagination.dto';
 
 @Injectable()
 export class UsersService {
@@ -31,6 +33,28 @@ export class UsersService {
 
   async findByUserName(_username: string): Promise<User | null> {
     return this.userRepository.findOneBy({ username: _username });
+  }
+
+  async getUsersWithPagination(
+    getUsersPaginationDto: GetUsersPaginationDto,
+  ): Promise<PaginatedResult<User>> {
+    const { page, limit } = getUsersPaginationDto;
+    const query = this.userRepository.createQueryBuilder('user');
+
+    const totalCount = await query.getCount();
+    query.offset((page - 1) * limit);
+    query.limit(limit);
+
+    const users = await query.getMany();
+
+    return {
+      data: users,
+      pagination: {
+        totalCount,
+        page,
+        limit,
+      },
+    };
   }
 
   findAll() {
